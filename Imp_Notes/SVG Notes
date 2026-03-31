@@ -1,0 +1,6 @@
+//SVG : special xpath (local-name() and name()) 
+//SVG - normal CSS selector
+
+//Psuedo element: JavaScriptExecutor
+
+//ShadowDOm : get the JSPath --> use JavascriptExecutor to get the HTML element ---> convert to webElement 

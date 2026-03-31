@@ -1,0 +1,152 @@
+xpath: address of the element in HTML DOM
+//
+//	1. absolute xpath: top node to that element
+//		/html/body/div[2]/div/div/div/div[3]/div/form/div[1]/div/input
+//
+//	2. relative xpath: custom xpath
+
+	1. with single attribute:
+	          htmltag[@attr='value']
+	          input[@id='input-email']
+	          input[@name='email']
+	          input[@placeholder='E-Mail Address']
+
+	          driver.findElement(By.xpath("//input[@placeholder='E-Mail Address']")).sendKeys("Naveen")
+
+	2. with multiple attr:
+			 htmltag[@attr1='value' and @attr2='value']
+			 input[@name='email' and @type='text']
+			 input[@name='email' and @placeholder='E-Mail Address' and @id='input-email']
+
+			 input[@name='email' and @placeholder='E-Mail Address' or @id='input-email11']
+	         a[@href='https://naveenautomationlabs.com/opencart/index.php?route=account/forgotten' and @class='list-group-item']
+
+	3. text(): link, p, label, header h1 h2 ..h6, span, ....
+			//htmltag[text()='value']
+			//h2[text()='New Customer']
+			//driver.findElement(By.xpath("//h2[text()='New Customer']")).getText();
+
+			//a[text()='Recurring payments']
+
+	4. text() with attribute:
+			//htmltag[text()='value' and @attr='value']
+			//a[text()='Forgotten Password' and @class='list-group-item']
+			//a[@class='list-group-item' and text()='Forgotten Password']
+			//a[@class='list-group-item' and text()='Forgotten Password' and @href='https://naveenautomationlabs.com/opencart/index.php?route=account/forgotten']
+
+	5. contains():
+			//htmltag[contains(@attr,'value')]
+			//input[contains(@placeholder,'E-Mail')]
+			//input[contains(@placeholder,'Address')]
+
+			//htmltag[contains(@attr1,'value') and contains(@attr2='value')]
+			//input[contains(@placeholder,'Address') and contains(@id,'email')]
+		
+			//input[contains(@placeholder,'Address') and contains(@id,'email') and @name='email']
+		
+			//a[contains(@href,'forgotten') and @class='list-group-item']
+
+	6. contains() with text():
+			//htmltag[contains(text(), 'value')]
+			//h2[contains(text(), 'Returning')]
+			//strong[contains(text(), 'returning customer')]
+			//p[contains(text(), 'able to shop faster')]
+
+	7. contains() with text() and @attr
+			//htmltag[contains(text(), 'value') and contains(attr,'value')]
+			//a[contains(text(), 'Recurring') and contains(@class,'group-item')]
+
+			//htmltag[text()='value' and contains(attr,'value')]
+		
+			//htmltag[contains(text(), 'value') and text()='value']
+			//strong[contains(text(), 'returning customer') and text()='I am a returning customer']
+
+
+	8. starts-with():
+			//htmltag[starts-with(@attr,'value')]
+			//input[starts-with(@placeholder,'E-Mail')]
+		
+			//htmltag[starts-with(text(),'value')]
+			//p[starts-with(text(),'By creating an account')]
+
+	9. ends-with(): NA
+
+	10. indexing: 
+			//	(//a[@class='list-group-item'])[5]
+			//
+			//	(//a[@class='list-group-item'])[position()=1]
+			//	(//a[@class='list-group-item'])[1]
+			
+				//driver.findElement(By.xpath("(//a[@class='list-group-item'])[5]")).click();
+
+
+
+	11. parent to child:
+
+			//parent/child --> direct child element
+				//parenttag[@attr='value']/childtag[@attr='value']
+		
+				//div[@class='form-group']/input[@id='input-email']
+				//div[@class='form-group']/child::input[@id='input-email']
+
+
+			//parent//child --> direct + indirect child elements
+				//div[@class='form-group']//input[@id='input-email']
+
+				//html/body/div --- 2
+				//html/body//div --- 40
+
+				//footer//a -- total links in the footer
+
+
+				//	(//form//input[@class='form-control'])[1]
+				//	(//form//input[@class='form-control'])[5]
+				//
+				//	(//form//input[@class='form-control'])[last()]
+				//	(//form//input[@class='form-control'])[last()-1]
+
+
+	//	Dynamic ID/elements:
+
+				//	<input id="automation_123">
+				//	<input id="automation_234">
+				//	<input id="automation_900">
+				//	<input id="automation_454">
+				//
+				//	By.id("automation_123")-- Not Recommended
+				//
+				//	By.xpath("//input[contains(@id,'automation_')]");
+				//	By.xpath("//input[starts-with(@id,'automation_')]");
+
+
+	//Xpath Axes:
+
+				//child to parent: backward traversing
+				//input[@id='input-firstname']/../../../../../../../../..
+			
+				//input[@id='input-firstname']/..
+				//input[@id='input-firstname']/parent::div ---> only direct parent
+				//input[@id='input-firstname']/ancestor::div ---> direct parent (immediate parent) + indirect parent(grand parents)
+			
+				//input[@id='input-firstname']/ancestor::form -- 1 of 1
+				//input[@id='input-firstname']/ancestor::*
+
+
+	//siblings:
+
+				//input[@id='input-email']/preceding-sibling::label
+				//label[@for='input-email']/following-sibling::input[@id='input-email']
+			
+				//https://www.orangehrm.com/en/contact-sales/
+
+				//option[@value='Afghanistan']/following-sibling::option -- 231
+				//option[@value='Afghanistan']/preceding-sibling::option -- 1
+			
+			
+				//td[text()='Joe.Root']/preceding-sibling::td/input[@type='checkbox']
+				//td[text()='John.Smith']/preceding-sibling::td/input[@type='checkbox']
+				//td[text()='Sarah.Johnson']/preceding-sibling::td/input[@type='checkbox']
+			
+			
+				//span[text()='Anushka Sharma']/ancestor::td/following-sibling::td/span/span
+				//span[text()='Sophie Devine']/ancestor::td/following-sibling::td/span/span

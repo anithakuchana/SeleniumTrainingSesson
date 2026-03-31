@@ -1,0 +1,34 @@
+//xpath                 vs                                    css
+		
+//1.syntax            complex                                 easy/medium
+		
+//2.performance       good                					  good+
+		
+//3.text              yes										no
+		
+//4. sibling           yes                                     limited(only following)
+		
+//5. child to parent   yes             							no
+		
+//6. parent to child	yes										yes
+		
+//7. backward traverse  yes                						no
+		
+//8. index				yes										yes(+1)	
+		
+//9. not                yes										yes
+		
+//10. comma/union		yes										yes
+		
+//11. endswith          no                             			yes
+		
+//12. contains			yes										yes
+		
+//13. startswith		yes										yes
+		
+//14. space:            yes										no
+		
+		
+//15. SVG				yes										limited
+//16. SHADOW DOM		no										yes	
+//17. Relative Locators	yes										yes

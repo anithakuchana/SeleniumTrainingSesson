@@ -1,0 +1,108 @@
+//css -- cascaded style sheet
+		
+		//1. id:
+		   #id : #input-email
+				// tag#id
+				// input#input-email
+		
+		2. class:
+				// .class or tag.class
+				// .form-control
+				// .img-responsive
+				// img.img-responsive
+				// input.form-control
+				driver.findElement(By.cssSelector(".img-responsive")).isDisplayed();
+		
+		3. multiple classes:
+				// .c1.c2.c3.c4....cn or tag.c1.c2.c3...cn
+				// .btn.btn-primary or input.btn.btn-primary
+				
+		4. id + class:
+				// #id.class
+				// .class#id
+				// tag.class#id or tag#id.class
+				// #input-firstname.form-control
+				// .form-control#input-firstname
+				// input.form-control#input-firstname
+		
+		5. other attributes: 
+				// tag[attr='value']
+				// input[name='firstname'] -- css
+				//input[@name='firstname'] --xpath
+				// input[placeholder='First Name']
+		
+		6. multiple attributes:
+				// tag[attr1='value'][attr2='value'][attr3='value']
+				// input[name='firstname'][id='input-firstname'][placeholder='First Name']
+				// input[name='firstname'][placeholder='First Name']#input-firstname
+				// input[name='firstname'][placeholder='First Name']#input-firstname.form-control
+				// input#input-firstname.form-control[name='firstname'][placeholder='First Name']
+				// input[type='submit'][value='Continue']
+		
+				driver.findElement(By.cssSelector("input[type='submit'][value='Continue']")).click();
+		
+		7. text is not supported
+		
+		
+		8. contains: *=
+				// tag[attr *= 'value']
+				// input[placeholder *= 'First']
+				// input[id *= 'firstname']
+
+			Dynamic Id CSS		
+				//		<input id="automation_123">
+				//		<input id="automation_234">
+				//		<input id="automation_900">
+				//		<input id="automation_454">
+		
+				// input[id *= 'automation_']
+		
+		9. startwith: ^=
+				// input[placeholder ^= 'First']
+		
+		
+		10. endswith: $=
+				// input[placeholder $= 'Name']
+				// a[href $= 'recurring']
+				
+		
+		11. parent to child:
+				// select#Form_getForm_Country > option ---> direct child elements
+				// select#Form_getForm_Country  option  ---> direct + indirect child elements
+				// form.form-horizontal > div -- 1
+				// form.form-horizontal  div -- 19
+		
+		
+		12. indexing in css:		
+				// select#Form_getForm_Country > option:nth-of-type(2) -- 2nd index
+				// select#Form_getForm_Country > option:nth-of-type(n) -- all the elements
+				// select#Form_getForm_Country > option:first-child -- first child
+				// select#Form_getForm_Country > option:last-child -- last child
+				// select#Form_getForm_Country > option:nth-child(5) -- 5th child element
+				// select#Form_getForm_Country > option:nth-last-child(3) --from the last fetch 3rd element
+				// select#Form_getForm_Country > option:nth-last-child(n) -- all the elements
+				
+				// select#Form_getForm_Country > option:nth-of-type(4n) -- 4 8 12 16...
+				// select#Form_getForm_Country > option:nth-of-type(2n) -- even
+				// select#Form_getForm_Country > option:nth-of-type(2n-1) -- odd
+				
+				// select#Form_getForm_Country > option:nth-child(even)
+				// select#Form_getForm_Country > option:nth-child(odd)
+		
+		
+		13. child to parent/ancestor: backward/preceding traversing --- NA
+		
+		14. sibling: only following sibling is supported
+				// label[for='input-email'] + input[id='input-email']
+				// option[value='Afghanistan'] + option --> immediate following sibling
+				// option[value='Afghanistan'] ~ option ---> all the following siblings
+		
+		15. comma in css:
+				// input#input-email,input#input-password,img.img-responsive --- 3 elements
+		
+		16. not in css:
+				// input.form-control:not(input[name='search'])
+				
+				
+				
+				
