@@ -42,6 +42,8 @@ public class DuplicateCharacters {
 		}
 
 	}
+	
+	// find duplicates using set
 
 	public static Set<Character> findDuplicates2(String str) {
 		Set<Character> seen = new HashSet<>();
